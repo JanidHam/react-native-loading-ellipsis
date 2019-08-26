@@ -6,6 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JanidHam/react-native-loading-ellipsis.git"
+  },
   "keywords": [
     "react-native",
     "react-component",
@@ -24,6 +28,10 @@
   ],
   "author": "Janid Ham <janid.ham20@gmail.com>",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JanidHam/react-native-loading-ellipsis/issues"
+  },
+  "homepage": "https://github.com/JanidHam/react-native-loading-ellipsis#readme",
   "devDependencies": {
     "metro-react-native-babel-preset": "^0.56.0"
   }

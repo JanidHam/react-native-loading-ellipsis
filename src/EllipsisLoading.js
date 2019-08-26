@@ -50,6 +50,7 @@ const animateDots = (whichDot, animateDotsParam, animationState, props) => {
   }
 
   const { minOpacity, animationDelay } = props
+  // swap fade direction when we hit end of list
   if (whicDotTmp >= animationState.dotOpacities.length) {
     whicDotTmp = 0
     const min = minOpacity
@@ -69,15 +70,15 @@ const animateDots = (whichDot, animateDotsParam, animationState, props) => {
 
 const EllipsisLoading = props => {
   const [animationState, setAnimationState] = useState({
-    dotOpacities: initializeDots({ ...props, ...defaultProps }),
+    dotOpacities: initializeDots({ ...defaultProps, ...props }),
     targetOpacity: 1,
     shouldAnimate: true,
   })
 
   useEffect(() => {
     animateDots(0, animateDots, animationState, {
-      ...props,
       ...defaultProps,
+      ...props,
     })
 
     return function cleanup() {
@@ -85,17 +86,17 @@ const EllipsisLoading = props => {
     }
   })
 
-  const { style, styleDot, dotSize } = defaultProps
+  const { style, styleDot } = defaultProps
+  const { styleDot: sDot, dotSize } = props
 
   styleDot.width = dotSize || DOT_SIZE
   styleDot.height = dotSize || DOT_SIZE
   styleDot.borderRadius = (dotSize || DOT_SIZE) / 2
 
+  const s = { ...styles.dotDefault, ...styleDot, ...sDot }
+
   const dots = animationState.dotOpacities.map((o, i) => (
-    <Animated.View
-      key={`${i}-dot`}
-      style={[{ opacity: o }, styles.dotDefault, styleDot]}
-    />
+    <Animated.View key={`${i}-dot`} style={[{ opacity: o }, s]} />
   ))
 
   return <View style={[style, styles.container]}>{dots}</View>

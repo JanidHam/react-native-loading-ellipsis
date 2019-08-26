@@ -2,6 +2,8 @@
 
 A simple, loading dots component like Airbnb loading. Ideal for everywhere.
 
+![](assets/ellipsis-loading.gif)
+
 
 ## Installation
 

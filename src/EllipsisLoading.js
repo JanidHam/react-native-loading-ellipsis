@@ -62,6 +62,7 @@ const animateDots = (whichDot, animateDotsParam, animationState, props) => {
 
   Animated.timing(animationState.dotOpacities[whicDotTmp], {
     toValue: animationState.targetOpacity,
+    useNativeDriver : true,
     duration: animationDelay,
   }).start(() =>
     animateDotsParam(nextDot, animateDotsParam, animationState, props),
